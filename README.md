@@ -45,7 +45,7 @@ Clone the repository:
 
 Bash
 
-git clone 
+git clone https://github.com/Ashutosh-JavaDev/TiffinService.git
 Navigate to the project directory:
 
 Bash
