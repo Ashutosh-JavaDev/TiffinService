@@ -45,7 +45,7 @@ Clone the repository:
 
 Bash
 
-git clone https://github.com/yourusername/tasty-tiffin-service.git
+git clone 
 Navigate to the project directory:
 
 Bash
