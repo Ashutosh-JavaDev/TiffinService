@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { ChefProfile } from './components/ChefProfile';
-import { MenuVault } from './components/MenuVault';
 import { AdminDashboard } from './components/AdminDashboard';
 import { Timeline } from './components/Timeline';
+import { MenuVault } from './components/MenuVault';
 import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
+import { ChefProfile } from './components/ChefProfile';
 import { WhatsAppButton } from './components/WhatsAppButton';
 
 const App: React.FC = () => {
@@ -46,11 +46,13 @@ const App: React.FC = () => {
         
         <ChefProfile />
 
-        <Timeline />
-        
         <MenuVault />
 
+        <Timeline />
+        
         <Testimonials />
+        
+
 
         <section id="contact" className="py-24 bg-mintCream dark:bg-deepForest">
           <div className="max-w-7xl mx-auto px-6">
