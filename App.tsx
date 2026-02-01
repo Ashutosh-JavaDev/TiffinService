@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from './components/Navbar';
@@ -6,16 +5,16 @@ import { Hero } from './components/Hero';
 import { ChefProfile } from './components/ChefProfile';
 import { MenuVault } from './components/MenuVault';
 import { AdminDashboard } from './components/AdminDashboard';
+import { Timeline } from './components/Timeline';
+import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
-import { MessageSquare } from 'lucide-react';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
 
   useEffect(() => {
-    // Check local storage or system preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       setIsDarkMode(true);
@@ -46,8 +45,12 @@ const App: React.FC = () => {
         <Hero />
         
         <ChefProfile />
+
+        <Timeline />
         
         <MenuVault />
+
+        <Testimonials />
 
         <section id="contact" className="py-24 bg-mintCream dark:bg-deepForest">
           <div className="max-w-7xl mx-auto px-6">
