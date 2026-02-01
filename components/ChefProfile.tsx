@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CHEF_EXPERTISE } from '../constants';
@@ -63,9 +62,9 @@ export const ChefProfile: React.FC = () => {
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/20">
               <img 
-                src="https://images.unsplash.com/photo-1577214282222-0347823550d4?auto=format&fit=crop&q=80&w=600" 
-                alt="Chef Diwakar Kumar"
+                src="https://www.pexels.com/photo/iskcon-dhaka-swamibag-temple-jagannath-baloram-subhadra-maharani-12428567/?auto=compress&cs=tinysrgb&w=800"
                 className="w-full h-full object-cover"
+                alt="Chef Diwakar Kumar"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 glass p-6 rounded-2xl shadow-xl max-w-[200px]">
