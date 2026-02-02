@@ -60,12 +60,20 @@ export const ChefProfile: React.FC = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/20">
-            <img 
-          src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1600" 
-          className="w-full h-full object-cover grayscale"
-          alt="Kitchen Background"
-        />
+            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-darkMoss/5">
+              <img 
+                /* 
+                   HOW TO USE YOUR OWN PHOTO:
+                   1. Put 'diwakar.jpeg' into the 'public' folder of your project root.
+                   2. Change the src below to: src="/diwakar.jpeg"
+                */
+                src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&q=80&w=800"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&q=80&w=800";
+                }}
+                className="w-full h-full object-cover"
+                alt="Chef Diwakar Kumar"
+              />
             </div>
             <div className="absolute -bottom-6 -right-6 glass p-6 rounded-2xl shadow-xl max-w-[200px]">
               <p className="font-serif italic text-sm">"Food is not just sustenance, it's a memory served on a plate."</p>
