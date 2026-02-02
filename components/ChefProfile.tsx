@@ -61,11 +61,11 @@ export const ChefProfile: React.FC = () => {
             className="relative"
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/20">
-              <img 
-                src="https://www.pexels.com/photo/iskcon-dhaka-swamibag-temple-jagannath-baloram-subhadra-maharani-12428567/?auto=compress&cs=tinysrgb&w=800"
-                className="w-full h-full object-cover"
-                alt="Chef Diwakar Kumar"
-              />
+            <img 
+          src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1600" 
+          className="w-full h-full object-cover grayscale"
+          alt="Kitchen Background"
+        />
             </div>
             <div className="absolute -bottom-6 -right-6 glass p-6 rounded-2xl shadow-xl max-w-[200px]">
               <p className="font-serif italic text-sm">"Food is not just sustenance, it's a memory served on a plate."</p>
