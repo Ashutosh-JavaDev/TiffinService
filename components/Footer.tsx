@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
               <h4 className="font-bold uppercase tracking-widest text-xs mb-6 opacity-40">Location</h4>
               <p className="opacity-70 leading-relaxed mb-6">
                 Premium Tiffin Hub,<br />
-                Ranchi, Jharkhand 462022
+                Patna, Bihar 800001
               </p>
               <div className="flex gap-4">
                 <SocialIcon icon={<Instagram size={18} />} />
