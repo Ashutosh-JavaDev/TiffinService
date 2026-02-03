@@ -81,7 +81,7 @@ export const ChefProfile: React.FC = () => {
                    Vite serves the 'public' folder at the root path.
                    Using 'diwakar.jpeg' is the correct relative web path.
                 */
-                src="diwakar.jpg"
+                src="Diwakar.png"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   // If our local image fails, fall back to a high-quality placeholder
