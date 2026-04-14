@@ -32,6 +32,10 @@ const SNACK_ITEMS: SnackItem[] = [
   { id: 13, name: 'Roasted Makhana',         weight: '200 gm', weightGm: 200, price: 180, category: 'Healthy', image: 'https://images.unsplash.com/photo-1601050690117-94f5f7fa8b4e?auto=format&fit=crop&q=80&w=400' },
   { id: 14, name: 'Makhana Namkeen',         weight: '250 gm', weightGm: 250, price: 190, category: 'Healthy', image: 'https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&q=80&w=400' },
 ];
+const WA_NUMBER = '919534550381';
+const GREEN_GRAD = 'linear-gradient(135deg,#2D5A2D,#1A4A1A)';
+const GREEN_SOLID = '#2D5A2D';
+const GREEN_LIGHT = 'rgba(45,90,45,0.10)';
 
 type SortOption = 'default' | 'price-asc' | 'price-desc' | 'weight-asc' | 'weight-desc';
 
@@ -48,22 +52,18 @@ export const SnacksStore: React.FC = () => {
 
   const filteredItems = useMemo(() => {
     let items = [...SNACK_ITEMS];
-
     if (search.trim()) {
       items = items.filter(i => i.name.toLowerCase().includes(search.toLowerCase()));
     }
-
     if (activeCategory !== 'All') {
       items = items.filter(i => i.category === activeCategory);
     }
-
     switch (sort) {
       case 'price-asc':   items.sort((a, b) => a.price - b.price); break;
       case 'price-desc':  items.sort((a, b) => b.price - a.price); break;
       case 'weight-asc':  items.sort((a, b) => a.weightGm - b.weightGm); break;
       case 'weight-desc': items.sort((a, b) => b.weightGm - a.weightGm); break;
     }
-
     return items;
   }, [search, sort, activeCategory]);
 
@@ -73,30 +73,21 @@ export const SnacksStore: React.FC = () => {
   const addToCart = (item: SnackItem) => {
     setCart(prev => {
       const existing = prev.find(c => c.id === item.id);
-      if (existing) {
-        return prev.map(c => c.id === item.id ? { ...c, quantity: c.quantity + 1 } : c);
-      }
+      if (existing) return prev.map(c => c.id === item.id ? { ...c, quantity: c.quantity + 1 } : c);
       return [...prev, { ...item, quantity: 1 }];
     });
   };
 
   const updateQty = (id: number, delta: number) => {
-    setCart(prev => {
-      return prev
-        .map(c => c.id === id ? { ...c, quantity: c.quantity + delta } : c)
-        .filter(c => c.quantity > 0);
-    });
+    setCart(prev =>
+      prev.map(c => c.id === id ? { ...c, quantity: c.quantity + delta } : c)
+          .filter(c => c.quantity > 0)
+    );
   };
 
-  const removeFromCart = (id: number) => {
-    setCart(prev => prev.filter(c => c.id !== id));
-  };
-
+  const removeFromCart = (id: number) => setCart(prev => prev.filter(c => c.id !== id));
   const getQty = (id: number) => cart.find(c => c.id === id)?.quantity ?? 0;
-
-  const handleImgError = (id: number) => {
-    setImgErrors(prev => new Set(prev).add(id));
-  };
+  const handleImgError = (id: number) => setImgErrors(prev => new Set(prev).add(id));
 
   const sortLabels: Record<SortOption, string> = {
     'default':     'Default',
@@ -104,6 +95,12 @@ export const SnacksStore: React.FC = () => {
     'price-desc':  'Price: High → Low',
     'weight-asc':  'Weight: Low → High',
     'weight-desc': 'Weight: High → Low',
+  };
+
+  const placeOrder = () => {
+    const lines = cart.map(c => `${c.name} x${c.quantity} (₹${c.price * c.quantity})`).join('%0A');
+    const text = encodeURIComponent(`🛒 Order from Tasty Tiffin Snacks:\n`) + lines + `%0ATotal: ₹${cartTotal}`;
+    window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
   };
 
   return (
@@ -118,12 +115,14 @@ export const SnacksStore: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
-              style={{ background: 'rgba(249,115,22,0.12)', color: '#ea580c' }}>
+            <span
+              className="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
+              style={{ background: GREEN_LIGHT, color: GREEN_SOLID }}
+            >
               Fresh &amp; Crunchy
             </span>
             <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4 text-darkMoss dark:text-mintCream">
-              Snacks &amp; <span style={{ color: '#ea580c' }}>Namkeen</span>
+              Snacks &amp; <span className="text-accentGreen dark:text-neonMint">Namkeen</span>
             </h2>
             <p className="text-base opacity-60 max-w-xl mx-auto">
               Handcrafted traditional snacks made fresh daily — browse, pick and get them delivered.
@@ -141,7 +140,7 @@ export const SnacksStore: React.FC = () => {
               placeholder="Search snacks…"
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 rounded-2xl border border-darkMoss/10 dark:border-white/10 bg-mintCream dark:bg-white/5 text-darkMoss dark:text-mintCream placeholder:opacity-40 focus:outline-none focus:ring-2 focus:ring-orange-400/40 transition"
+              className="w-full pl-11 pr-4 py-3 rounded-2xl border border-darkMoss/10 dark:border-white/10 bg-mintCream dark:bg-white/5 text-darkMoss dark:text-mintCream placeholder:opacity-40 focus:outline-none focus:ring-2 focus:ring-accentGreen/30 transition"
             />
           </div>
 
@@ -149,7 +148,7 @@ export const SnacksStore: React.FC = () => {
           <div className="relative">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 px-5 py-3 rounded-2xl border border-darkMoss/10 dark:border-white/10 bg-mintCream dark:bg-white/5 text-sm font-semibold transition hover:border-orange-400"
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl border border-darkMoss/10 dark:border-white/10 bg-mintCream dark:bg-white/5 text-sm font-semibold transition hover:border-accentGreen dark:hover:border-neonMint"
             >
               <SlidersHorizontal size={16} />
               {sortLabels[sort]}
@@ -168,7 +167,7 @@ export const SnacksStore: React.FC = () => {
                     <button
                       key={key}
                       onClick={() => { setSort(key); setShowFilters(false); }}
-                      className={`w-full text-left px-5 py-3 text-sm transition hover:bg-orange-50 dark:hover:bg-white/5 ${sort === key ? 'font-bold text-orange-500' : ''}`}
+                      className={`w-full text-left px-5 py-3 text-sm transition hover:bg-mintCream dark:hover:bg-white/5 ${sort === key ? 'font-bold text-accentGreen dark:text-neonMint' : ''}`}
                     >
                       {sortLabels[key]}
                     </button>
@@ -184,12 +183,12 @@ export const SnacksStore: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowCart(true)}
             className="relative flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-bold text-white shadow-lg transition"
-            style={{ background: 'linear-gradient(135deg,#f97316,#ea580c)' }}
+            style={{ background: GREEN_GRAD }}
           >
             <ShoppingCart size={18} />
             Cart
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-white text-orange-600 text-[10px] font-black flex items-center justify-center shadow">
+              <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-white text-accentGreen text-[10px] font-black flex items-center justify-center shadow">
                 {cartCount}
               </span>
             )}
@@ -204,10 +203,10 @@ export const SnacksStore: React.FC = () => {
               onClick={() => setActiveCategory(cat)}
               className={`px-5 py-2 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-200 border ${
                 activeCategory === cat
-                  ? 'text-white border-orange-500 shadow-md shadow-orange-200/40'
-                  : 'bg-transparent border-darkMoss/10 dark:border-white/10 text-darkMoss dark:text-mintCream hover:border-orange-300'
+                  ? 'text-white border-accentGreen'
+                  : 'bg-transparent border-darkMoss/10 dark:border-white/10 text-darkMoss dark:text-mintCream hover:border-accentGreen/50 dark:hover:border-neonMint/50'
               }`}
-              style={activeCategory === cat ? { background: 'linear-gradient(135deg,#f97316,#ea580c)' } : {}}
+              style={activeCategory === cat ? { background: GREEN_GRAD } : {}}
             >
               {cat}
             </button>
@@ -266,10 +265,10 @@ export const SnacksStore: React.FC = () => {
               {/* Cart header */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-darkMoss/10 dark:border-white/10">
                 <div className="flex items-center gap-3">
-                  <ShoppingCart size={22} style={{ color: '#ea580c' }} />
+                  <ShoppingCart size={22} className="text-accentGreen dark:text-neonMint" />
                   <h3 className="text-lg font-bold text-darkMoss dark:text-mintCream">Your Cart</h3>
                   {cartCount > 0 && (
-                    <span className="px-2 py-0.5 rounded-full text-xs font-bold text-white" style={{ background: '#ea580c' }}>
+                    <span className="px-2 py-0.5 rounded-full text-xs font-bold text-white" style={{ background: GREEN_SOLID }}>
                       {cartCount}
                     </span>
                   )}
@@ -304,14 +303,21 @@ export const SnacksStore: React.FC = () => {
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-sm text-darkMoss dark:text-mintCream truncate">{c.name}</p>
                       <p className="text-xs opacity-50">{c.weight}</p>
-                      <p className="text-sm font-bold mt-0.5" style={{ color: '#ea580c' }}>₹{c.price * c.quantity}</p>
+                      <p className="text-sm font-bold mt-0.5 text-accentGreen dark:text-neonMint">₹{c.price * c.quantity}</p>
                     </div>
                     <div className="flex items-center gap-1">
-                      <button onClick={() => updateQty(c.id, -1)} className="w-7 h-7 rounded-full bg-orange-100 dark:bg-white/10 flex items-center justify-center hover:bg-orange-200 transition">
+                      <button
+                        onClick={() => updateQty(c.id, -1)}
+                        className="w-7 h-7 rounded-full bg-mintCream dark:bg-white/10 flex items-center justify-center hover:bg-neonMint/20 transition"
+                      >
                         <Minus size={12} />
                       </button>
                       <span className="w-6 text-center text-sm font-bold">{c.quantity}</span>
-                      <button onClick={() => updateQty(c.id, 1)} className="w-7 h-7 rounded-full flex items-center justify-center text-white transition" style={{ background: '#ea580c' }}>
+                      <button
+                        onClick={() => updateQty(c.id, 1)}
+                        className="w-7 h-7 rounded-full flex items-center justify-center text-white transition"
+                        style={{ background: GREEN_SOLID }}
+                      >
                         <Plus size={12} />
                       </button>
                     </div>
@@ -336,12 +342,9 @@ export const SnacksStore: React.FC = () => {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={placeOrder}
                     className="w-full py-4 rounded-2xl text-white font-bold text-base shadow-lg transition"
-                    style={{ background: 'linear-gradient(135deg,#f97316,#ea580c)' }}
-                    onClick={() => {
-                      const msg = cart.map(c => `${c.name} x${c.quantity} (₹${c.price * c.quantity})`).join('%0A');
-                      window.open(`https://wa.me/?text=Order:%0A${msg}%0ATotal: ₹${cartTotal}`, '_blank');
-                    }}
+                    style={{ background: GREEN_GRAD }}
                   >
                     Place Order via WhatsApp
                   </motion.button>
@@ -379,18 +382,19 @@ const SnackCard: React.FC<SnackCardProps> = ({ item, qty, imgError, onImgError, 
       className="group bg-white dark:bg-white/5 rounded-3xl overflow-hidden border border-darkMoss/8 dark:border-white/8 shadow-md hover:shadow-xl transition-all duration-400 flex flex-col"
     >
       {/* Image */}
-      <div className="relative aspect-square overflow-hidden bg-orange-50 dark:bg-white/5">
+      <div className="relative aspect-square overflow-hidden bg-mintCream dark:bg-white/5">
         <img
           src={imgError ? fallback : item.image}
           alt={item.name}
           loading="lazy"
           onError={onImgError}
-          className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-600"
-          style={{ transition: 'transform 0.6s ease' }}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
         <div className="absolute top-3 left-3">
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase text-white shadow"
-            style={{ background: 'rgba(234,88,12,0.85)', backdropFilter: 'blur(4px)' }}>
+          <span
+            className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase text-white shadow"
+            style={{ background: 'rgba(45,90,45,0.88)', backdropFilter: 'blur(4px)' }}
+          >
             {item.category}
           </span>
         </div>
@@ -400,7 +404,7 @@ const SnackCard: React.FC<SnackCardProps> = ({ item, qty, imgError, onImgError, 
       <div className="p-4 flex flex-col flex-1">
         <h3 className="font-bold text-sm leading-snug text-darkMoss dark:text-mintCream mb-1 line-clamp-2">{item.name}</h3>
         <p className="text-xs opacity-50 mb-2">{item.weight}</p>
-        <p className="text-lg font-black mb-4" style={{ color: '#ea580c' }}>₹{item.price}</p>
+        <p className="text-lg font-black mb-4 text-accentGreen dark:text-neonMint">₹{item.price}</p>
 
         {/* Add / Qty control */}
         <div className="mt-auto">
@@ -410,17 +414,17 @@ const SnackCard: React.FC<SnackCardProps> = ({ item, qty, imgError, onImgError, 
               whileTap={{ scale: 0.94 }}
               onClick={onAdd}
               className="w-full py-2.5 rounded-2xl text-white text-sm font-bold shadow-md transition"
-              style={{ background: 'linear-gradient(135deg,#f97316,#ea580c)' }}
+              style={{ background: GREEN_GRAD }}
             >
               Add
             </motion.button>
           ) : (
-            <div className="flex items-center justify-between bg-orange-50 dark:bg-white/5 rounded-2xl p-1">
+            <div className="flex items-center justify-between bg-mintCream dark:bg-white/5 rounded-2xl p-1">
               <motion.button
                 whileTap={{ scale: 0.88 }}
                 onClick={onDecrease}
                 className="w-8 h-8 rounded-xl flex items-center justify-center font-bold text-white shadow transition"
-                style={{ background: 'linear-gradient(135deg,#f97316,#ea580c)' }}
+                style={{ background: GREEN_GRAD }}
               >
                 <Minus size={14} />
               </motion.button>
@@ -429,7 +433,7 @@ const SnackCard: React.FC<SnackCardProps> = ({ item, qty, imgError, onImgError, 
                 whileTap={{ scale: 0.88 }}
                 onClick={onIncrease}
                 className="w-8 h-8 rounded-xl flex items-center justify-center font-bold text-white shadow transition"
-                style={{ background: 'linear-gradient(135deg,#f97316,#ea580c)' }}
+                style={{ background: GREEN_GRAD }}
               >
                 <Plus size={14} />
               </motion.button>
