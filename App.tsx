@@ -9,6 +9,7 @@ import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
 import { ChefProfile } from './components/ChefProfile';
 import { WhatsAppButton } from './components/WhatsAppButton';
+import { SnacksStore } from './components/SnacksStore';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -47,7 +48,7 @@ const App: React.FC = () => {
         <ChefProfile />
 
         <MenuVault />
-
+    <SnacksStore/>
         <Timeline />
         
         <Testimonials />
