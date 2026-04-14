@@ -23,6 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme, onAdminClic
     { name: 'Home', href: '#' },
     { name: 'Chef', href: '#chef' },
     { name: 'Menu', href: '#menu' },
+    { name: 'Snacks', href: '#snacks' },
     { name: 'Contact', href: '#contact' },
   ];
 
