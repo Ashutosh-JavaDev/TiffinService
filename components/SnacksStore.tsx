@@ -29,7 +29,7 @@ const SNACK_ITEMS: SnackItem[] = [
   { id: 10, name: 'Moong Dal Mathri',        weight: '200 gm', weightGm: 200, price: 85,  category: 'Namkeen', image: '/images/MoongDal.jpeg' },
   { id: 11, name: 'Mathri',                  weight: '200 gm', weightGm: 200, price: 60,  category: 'Snacks',  image: '/images/Methi.jpeg' },
   { id: 12, name: 'Murmura Mathana Namkeen', weight: '250 gm', weightGm: 250, price: 90,  category: 'Namkeen', image: '/images/Murmur.jpeg' },
-  { id: 13, name: 'Roasted Makhana',         weight: '200 gm', weightGm: 200, price: 180, category: 'Healthy', image: '/images/RoastedMakhana.jpeg' },
+  { id: 13, name: 'Roasted Makhana',         weight: '200 gm', weightGm: 200, price: 180, category: 'Healthy', image: '/images/RostedMakhana.jpeg' },
   { id: 14, name: 'Makhana Namkeen',         weight: '250 gm', weightGm: 250, price: 190, category: 'Healthy', image: '/images/makhana-namkeen.jpg' },
 ];
 const WA_NUMBER = '919534550381';
