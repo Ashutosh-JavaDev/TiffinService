@@ -17,20 +17,20 @@ interface CartItem extends SnackItem {
 }
 
 const SNACK_ITEMS: SnackItem[] = [
-  { id: 1,  name: 'Mini Kachori',           weight: '250 gm', weightGm: 250, price: 90,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1567892737950-30c4db37cd89?auto=format&fit=crop&q=80&w=400' },
-  { id: 2,  name: 'Salted Peanuts',          weight: '250 gm', weightGm: 250, price: 70,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1567892737950-30c4db37cd89?auto=format&fit=crop&q=80&w=400' },
-  { id: 3,  name: 'Samosa',                  weight: '250 gm', weightGm: 250, price: 80,  category: 'Snacks',  image: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce70?auto=format&fit=crop&q=80&w=400' },
-  { id: 4,  name: 'Bhakarwadi',              weight: '210 gm', weightGm: 210, price: 60,  category: 'Snacks',  image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80&w=400' },
-  { id: 5,  name: 'Moong Dal Namkeen',       weight: '250 gm', weightGm: 250, price: 70,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&q=80&w=400' },
-  { id: 6,  name: 'Namak Para',              weight: '250 gm', weightGm: 250, price: 80,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1582298538104-fe2e74c27f59?auto=format&fit=crop&q=80&w=400' },
-  { id: 7,  name: 'Thekua',                  weight: '200 gm', weightGm: 200, price: 70,  category: 'Sweets',  image: 'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&q=80&w=400' },
-  { id: 8,  name: 'Namkeen Mixture',         weight: '250 gm', weightGm: 250, price: 75,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1561626423-a51b45aef0a1?auto=format&fit=crop&q=80&w=400' },
-  { id: 9,  name: 'Poha Namkeen',            weight: '210 gm', weightGm: 210, price: 90,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1604152135912-04a022e23696?auto=format&fit=crop&q=80&w=400' },
-  { id: 10, name: 'Moong Dal Mathri',        weight: '200 gm', weightGm: 200, price: 85,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&q=80&w=400' },
-  { id: 11, name: 'Mathri',                  weight: '200 gm', weightGm: 200, price: 60,  category: 'Snacks',  image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&q=80&w=400' },
-  { id: 12, name: 'Murmura Mathana Namkeen', weight: '250 gm', weightGm: 250, price: 90,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1510508619703-72c9bef9b0cf?auto=format&fit=crop&q=80&w=400' },
-  { id: 13, name: 'Roasted Makhana',         weight: '200 gm', weightGm: 200, price: 180, category: 'Healthy', image: 'https://images.unsplash.com/photo-1601050690117-94f5f7fa8b4e?auto=format&fit=crop&q=80&w=400' },
-  { id: 14, name: 'Makhana Namkeen',         weight: '250 gm', weightGm: 250, price: 190, category: 'Healthy', image: 'https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&q=80&w=400' },
+  { id: 1,  name: 'Mini Kachori',           weight: '250 gm', weightGm: 250, price: 90,  category: 'Namkeen', image: '/images/MiniKachori.jpeg' },
+  { id: 2,  name: 'Salted Peanuts',          weight: '250 gm', weightGm: 250, price: 70,  category: 'Namkeen', image: '/images/salted-peanuts.jpg' },
+  { id: 3,  name: 'Samosa',                  weight: '250 gm', weightGm: 250, price: 80,  category: 'Snacks',  image: '/images/samosa.jpg' },
+  { id: 4,  name: 'Bhakarwadi',              weight: '210 gm', weightGm: 210, price: 60,  category: 'Snacks',  image: '/images/bhakarwadi.jpg' },
+  { id: 5,  name: 'Moong Dal Namkeen',       weight: '250 gm', weightGm: 250, price: 70,  category: 'Namkeen', image: '/images/moong-dal-namkeen.jpg' },
+  { id: 6,  name: 'Namak Para',              weight: '250 gm', weightGm: 250, price: 80,  category: 'Namkeen', image: '/images/namak-para.jpg' },
+  { id: 7,  name: 'Thekua',                  weight: '200 gm', weightGm: 200, price: 70,  category: 'Sweets',  image: '/images/thekua.jpg' },
+  { id: 8,  name: 'Namkeen Mixture',         weight: '250 gm', weightGm: 250, price: 75,  category: 'Namkeen', image: '/images/namkeen-mixture.jpg' },
+  { id: 9,  name: 'Poha Namkeen',            weight: '210 gm', weightGm: 210, price: 90,  category: 'Namkeen', image: '/images/poha-namkeen.jpg' },
+  { id: 10, name: 'Moong Dal Mathri',        weight: '200 gm', weightGm: 200, price: 85,  category: 'Namkeen', image: '/images/moong-dal-mathri.jpg' },
+  { id: 11, name: 'Mathri',                  weight: '200 gm', weightGm: 200, price: 60,  category: 'Snacks',  image: '/images/mathri.jpg' },
+  { id: 12, name: 'Murmura Mathana Namkeen', weight: '250 gm', weightGm: 250, price: 90,  category: 'Namkeen', image: '/images/murmura-mathana-namkeen.jpg' },
+  { id: 13, name: 'Roasted Makhana',         weight: '200 gm', weightGm: 200, price: 180, category: 'Healthy', image: '/images/roasted-makhana.jpg' },
+  { id: 14, name: 'Makhana Namkeen',         weight: '250 gm', weightGm: 250, price: 190, category: 'Healthy', image: '/images/makhana-namkeen.jpg' },
 ];
 const WA_NUMBER = '919534550381';
 const GREEN_GRAD = 'linear-gradient(135deg,#2D5A2D,#1A4A1A)';
