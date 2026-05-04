@@ -33,9 +33,9 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme, onAdminClic
         <div className={`rounded-full transition-all duration-500 flex items-center justify-between px-6 py-2 ${isScrolled ? 'glass shadow-lg scale-100' : 'scale-105'}`}>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-accentGreen dark:bg-neonMint flex items-center justify-center overflow-hidden">
-               <span className="text-white dark:text-deepForest font-bold font-serif">T</span>
+               <span className="text-white dark:text-deepForest font-bold font-serif">P</span>
             </div>
-            <span className="text-xl font-serif font-bold tracking-tight hidden md:block">Tasty Tiffin</span>
+            <span className="text-xl font-serif font-bold tracking-tight hidden md:block">Pettu</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">

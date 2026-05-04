@@ -17,7 +17,7 @@ interface CartItem extends SnackItem {
 }
 
 const SNACK_ITEMS: SnackItem[] = [
-  { id: 1,  name: 'Mini Ka Mori',           weight: '250 gm', weightGm: 250, price: 90,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1589113103503-496bc7d08891?auto=format&fit=crop&q=80&w=400' },
+  { id: 1,  name: 'Mini Kachori',           weight: '250 gm', weightGm: 250, price: 90,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1589113103503-496bc7d08891?auto=format&fit=crop&q=80&w=400' },
   { id: 2,  name: 'Salted Peanuts',          weight: '250 gm', weightGm: 250, price: 70,  category: 'Namkeen', image: 'https://images.unsplash.com/photo-1567892737950-30c4db37cd89?auto=format&fit=crop&q=80&w=400' },
   { id: 3,  name: 'Samosa',                  weight: '250 gm', weightGm: 250, price: 80,  category: 'Snacks',  image: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce70?auto=format&fit=crop&q=80&w=400' },
   { id: 4,  name: 'Bhakarwadi',              weight: '210 gm', weightGm: 210, price: 60,  category: 'Snacks',  image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80&w=400' },
