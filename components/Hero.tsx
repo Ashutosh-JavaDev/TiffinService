@@ -71,20 +71,22 @@ export const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <motion.button
+            <motion.a
+              href="#snacks"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-accentGreen dark:bg-neonMint text-white dark:text-deepForest rounded-full font-bold flex items-center gap-2"
             >
               Order Now <ArrowRight size={20} />
-            </motion.button>
-            <motion.button
+            </motion.a>
+            <motion.a
+              href="#menu"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border border-darkMoss/20 dark:border-neonMint/30 rounded-full font-bold"
             >
               Explore Menu
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
 

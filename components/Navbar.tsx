@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Menu, X, LayoutDashboard } from 'lucide-react';
+import { Sun, Moon, Menu, X, LayoutDashboard, ShoppingCart } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 interface NavbarProps {
   isDark: boolean;
@@ -12,6 +12,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme, onAdminClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { cartCount, setShowCart } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -20,31 +21,53 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme, onAdminClic
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Chef', href: '#chef' },
-    { name: 'Menu', href: '#menu' },
+    { name: 'Home',   href: '#' },
+    { name: 'Chef',   href: '#chef' },
+    { name: 'Menu',   href: '#menu' },
+    { name: 'Thali',  href: '#thali' },
     { name: 'Snacks', href: '#snacks' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Contact',href: '#contact' },
   ];
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4' : 'py-8'}`}>
-      <div className={`max-w-7xl mx-auto px-6`}>
+      <div className="max-w-7xl mx-auto px-6">
         <div className={`rounded-full transition-all duration-500 flex items-center justify-between px-6 py-2 ${isScrolled ? 'glass shadow-lg scale-100' : 'scale-105'}`}>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-accentGreen dark:bg-neonMint flex items-center justify-center overflow-hidden">
-               <span className="text-white dark:text-deepForest font-bold font-serif">P</span>
+            <div className="w-10 h-10 rounded-full bg-accentGreen dark:bg-neonMint flex items-center justify-center">
+              <span className="text-white dark:text-deepForest font-bold font-serif text-lg">P</span>
             </div>
             <span className="text-xl font-serif font-bold tracking-tight hidden md:block">Pettu</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {navLinks.map(link => (
               <NavLink key={link.name} href={link.href}>{link.name}</NavLink>
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            {/* Cart button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setShowCart(true)}
+              className="relative p-2 rounded-full hover:bg-darkMoss/5 dark:hover:bg-neonMint/10 transition-colors"
+              title="View Cart"
+            >
+              <ShoppingCart size={20} />
+              {cartCount > 0 && (
+                <motion.span
+                  key={cartCount}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-accentGreen dark:bg-neonMint text-white dark:text-deepForest text-[10px] font-black flex items-center justify-center shadow"
+                >
+                  {cartCount}
+                </motion.span>
+              )}
+            </motion.button>
+
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -54,6 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme, onAdminClic
             >
               <LayoutDashboard size={20} />
             </motion.button>
+
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -62,7 +86,8 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme, onAdminClic
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
-            <button 
+
+            <button
               className="md:hidden p-2"
               onClick={() => setMobileMenuOpen(true)}
             >
@@ -87,10 +112,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme, onAdminClic
               </button>
             </div>
             <div className="flex-1 flex flex-col items-center justify-center gap-8">
-              {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
+              {navLinks.map(link => (
+                <a
+                  key={link.name}
+                  href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-4xl font-serif hover:text-accentGreen dark:hover:text-neonMint transition-colors"
                 >
