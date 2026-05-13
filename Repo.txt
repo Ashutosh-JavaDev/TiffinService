@@ -1,0 +1,110 @@
+Read the complete repository structure, components, pages, APIs, assets, routing, styling, and existing business logic carefully before making any changes. Understand the full workflow of the cloud kitchen website including menu display, cart functionality, checkout process, and UI structure.
+
+Now implement the following features and improvements professionally:
+
+1. Menu Section Improvements:
+
+* Read every menu item properly from the existing menu/database/static data.
+* Automatically add high-quality food images according to the exact product/item names mentioned in the menu.
+* Ensure every food item has:
+
+  * Product image
+  * Name
+  * Description
+  * Price
+  * Veg/Non-Veg tag
+  * Add to Cart button
+* Maintain consistent image sizing and responsive layout.
+
+2. Thali Section (New Feature):
+   Create a completely new “Special Thali” section near the menu area.
+
+Add multiple thali categories with proper card-based UI:
+
+* Veg Thali
+* Premium Veg Thali
+* Non-Veg Thali
+* Family Thali
+* Mini Thali
+* Deluxe Thali
+
+Each thali card should include:
+
+* Attractive image
+* Thali name
+* Price
+* Included food items list
+* Veg/Non-Veg badge
+* Add to Cart button
+
+Example:
+
+* Mini Veg Thali – ₹149
+
+  * 2 Roti
+  * Dal Fry
+  * Rice
+  * Salad
+* Premium Non-Veg Thali – ₹349
+
+  * Butter Chicken
+  * 4 Roti
+  * Jeera Rice
+  * Raita
+  * Dessert
+
+Make the section visually premium and responsive.
+
+3. Cart & Billing Enhancements:
+   Upgrade the cart section professionally.
+
+Add:
+
+* Automatic delivery charge calculation based on user distance.
+* Detect user location using map/GPS integration.
+* Calculate delivery fee dynamically based on kilometers.
+* Show:
+
+  * Cart subtotal
+  * GST/Taxes (optional if structure exists)
+  * Delivery charges
+  * Final payable amount
+* Update the bill instantly whenever cart quantity changes.
+
+4. Map & Distance Integration:
+
+* Integrate Google Maps API or any suitable map service.
+* Detect customer location automatically.
+* Calculate distance from cloud kitchen/store location.
+* Use distance to calculate delivery fees dynamically.
+
+5. UI/UX Enhancements:
+   Redesign the complete website with a modern and professional cloud kitchen aesthetic.
+
+Improve:
+
+* Typography
+* Color palette
+* Hero section
+* Food cards
+* Buttons
+* Navbar
+* Footer
+* Cart drawer/modal
+* Mobile responsiveness
+* Animations and hover effects
+* Spacing and alignment
+
+Design inspiration:
+
+* Zomato
+* Swiggy
+* Uber Eats
+* Modern dark/light food ordering platforms
+
+6. Technical Improvements:
+
+* Optimize component structure.
+* Remove duplicated code.
+* Improve responsiveness for mobile/tablet/desktop.
+* Add loading states and smooth transitions.
