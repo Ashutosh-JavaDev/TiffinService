@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MenuTab } from '../types';
 import { MENU_ITEMS } from '../constants';
 import { ShoppingCart, CheckCircle2 } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../context/CartContext.tsx';
 
 export const MenuVault: React.FC = () => {
   const [activeTab, setActiveTab] = useState<MenuTab>(MenuTab.TIFFIN);

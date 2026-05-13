@@ -12,7 +12,7 @@ import { ChefProfile } from './components/ChefProfile';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { SnacksStore } from './components/SnacksStore';
 import { CartDrawer } from './components/CartDrawer';
-import { CartProvider } from './context/CartContext';
+import { CartProvider } from './context/CartContext.tsx';
 
 const AppInner: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
