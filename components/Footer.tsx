@@ -17,10 +17,10 @@ export const Footer: React.FC = () => {
                 9534550381
               </a>
               <a 
-                href="mailto:tastytiffin77@gmail.com" 
+                href="mailto:petturnc77@gmail.com" 
                 className="block text-2xl md:text-3xl font-medium opacity-80 hover:text-neonMint transition-colors"
               >
-                tastytiffin77@gmail.com
+                petturnc77@gmail.com
               </a>
             </div>
           </div>
