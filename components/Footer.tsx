@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-20 mb-20">
           <div>
-            <h2 className="text-7xl md:text-9xl font-serif font-bold opacity-10 mb-8 select-none">TASTY</h2>
+            <h2 className="text-7xl md:text-9xl font-serif font-bold opacity-10 mb-8 select-none">PETTU</h2>
             <div className="space-y-6">
               <a 
                 href="tel:9534550381" 
